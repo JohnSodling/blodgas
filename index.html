@@ -5,8 +5,29 @@
 </head>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<h1>Blodgasanalys</h1>
+<p>Analysverktyg för blodgastolkning</p>
+<input id="pH">
+<input id="Na" type="number">
+<input id="HCO3" type="number">
+<input id="Cl" type="number">
+
+<button type="button" onclick="myFunction()">Anjongap</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  // Get the value of the input field with id="numb"
+  let navalue = document.getElementById("Na").value;
+  let hco3value = document.getElementById("HCO3").value;
+  let clvalue = document.getElementById("Cl").value;
+  let anjongapresult = navalue-hco3value-clvalue
+  console.log(anjongapresult)
+  // If x is Not a Number or less than one or greater than 10
+  document.getElementById("demo").innerHTML = anjongapresult;
+}
+</script>
 
 </body>
 </html>
