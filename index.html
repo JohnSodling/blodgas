@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title</title>
+    <title>Page Title</title>
 </head>
+
 <body>
 
-<h1>Blodgasanalys</h1>
-<p>Analysverktyg för blodgastolkning</p>
-<input id="pH">
-<input id="Na" type="number">
-<input id="HCO3" type="number">
-<input id="Cl" type="number">
+    <h1>Blodgasanalys</h1>
+    <p>Analysverktyg för blodgastolkning</p>
+    <div>
+        pH <input id="pH" type="number">
+    </div>
+    <div>
+    pCO2 <input id="pCO2" type="number">
+</div>
+    <div>
+    BE <input id="BE" type="number">
+</div>
+    <div>
+    Na <input id="Na" type="number">
+</div>
+    <div>
+    HCO3 <input id="HCO3" type="number">
+</div>
+    <div>
+    CL <input id="Cl" type="number">
+</div>
 
-<button type="button" onclick="myFunction()">Anjongap</button>
+    <button type="button" onclick="calcanjongap()">Anjongap</button>
+    <button type="button" onclick="syrabas()">Tolka blodgas</button>
 
-<p id="demo"></p>
+    <p id="demo"></p>
 
-<script>
-function myFunction() {
-  // Get the value of the input field with id="numb"
-  let navalue = document.getElementById("Na").value;
-  let hco3value = document.getElementById("HCO3").value;
-  let clvalue = document.getElementById("Cl").value;
-  let anjongapresult = navalue-hco3value-clvalue
-  console.log(anjongapresult)
-  // If x is Not a Number or less than one or greater than 10
-  document.getElementById("demo").innerHTML = anjongapresult;
-}
-</script>
+    <script>
+        function syrabas() {
+            let pHvalue = document.getElementById("pH").value;
+            let pCO2value = document.getElementById("pCO2").value;
+            let BEvalue = document.getElementById("BE").value;
+            if (pHvalue < 7.35 && pCO2value < 6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Metabol acidos";
+            } else if (pHvalue < 7.35 && pCO2value > 6 && BEvalue > -3) {
+                document.getElementById("demo").innerHTML = "Respiratorisk acidos";
+            }
+            else {
+                document.getElementById("demo").innerHTML = "oklart";
+            }
+        }
+        //om ph < 7,35, och pCO2 > 6, och BE är över -3 => resp acidos
+        function calcanjongap() {
+            // Get the value of the input field with id="numb"
+            let navalue = document.getElementById("Na").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let clvalue = document.getElementById("Cl").value;
+            let anjongapresult = navalue - hco3value - clvalue
+            console.log(anjongapresult)
+            // If x is Not a Number or less than one or greater than 10
+            document.getElementById("demo").innerHTML = anjongapresult;
+        }
+    </script>
 
 </body>
+
 </html>
