@@ -9,37 +9,48 @@
 
     <h1>Blodgasanalys</h1>
     <p>Analysverktyg för blodgastolkning</p>
-    <div>
-        pH <input id="pH" type="number">
-    </div>
-    <div>
-    pCO2 <input id="pCO2" type="number">
-</div>
-<div>
-    pO2 <input id="pO2" type="number">
-</div>
-    <div>
-    BE <input id="BE" type="number">
-</div>
-    <div>
-    Na <input id="Na" type="number">
-</div>
-<div>
-    K <input id="K" type="number">
-</div>
-    <div>
-    HCO3 <input id="HCO3" type="number">
-</div>
-    <div>
-    CL <input id="Cl" type="number">
-</div>
-<div>
-    Laktat <input id="Laktat" type="number">
-</div>
-<div>
-    Albumin <input id="Albumin" type="number">
-</div>
-
+    <table>
+        <tr>
+            <th>pH</th>
+            <th><input id="pH" type="number"></th>
+        </tr>
+        <tr>
+            <th>pCO2</th>
+            <th><input id="pCO2" type="number"></th>
+        </tr>
+        <tr>
+            <th>pO2</th>
+            <th><input id="pO2" type="number"></th>
+        </tr>
+        <tr>
+            <th>BE</th>
+            <th><input id="BE" type="number"></th>
+        </tr>
+        <tr>
+            <th>HCO3</th>
+            <th><input id="HCO3" type="number"></th>
+        </tr>
+        <tr>
+            <th>Na</th>
+            <th><input id="Na" type="number"></th>
+        </tr>
+        <tr>
+            <th>K</th>
+            <th><input id="K" type="number"></th>
+        </tr>
+        <tr>
+            <th>Cl</th>
+            <th><input id="Cl" type="number"></th>
+        </tr>
+        <tr>
+            <th>Laktat</th>
+            <th><input id="Laktat" type="number"></th>
+        </tr>
+        <tr>
+            <th>Albumin</th>
+            <th><input id="Albumin" type="number"></th>
+        </tr>
+    </table>
 
     <button type="button" onclick="calcanjongap()">Anjongap</button>
     <button type="button" onclick="syrabas()">Tolka blodgas</button>
