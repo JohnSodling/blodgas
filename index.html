@@ -8,11 +8,12 @@
 <body>
 
     <h1>Blodgasanalys</h1>
-    <p>Analysverktyg för blodgastolkning</p>
+    <p>Analysverktyg för blodgastolkning. Betaversion.</p>
     <table>
         <tr>
             <th>pH</th>
             <th><input id="pH" type="number"></th>
+            <th>7,35-7,44</th>
         </tr>
         <tr>
             <th>pCO2</th>
@@ -24,7 +25,7 @@
         </tr>
         <tr>
             <th>BE</th>
-            <th><input id="BE" type="number"></th>
+            <th><input id="BE"></th>
         </tr>
         <tr>
             <th>HCO3</th>
@@ -52,7 +53,10 @@
         </tr>
     </table>
 
-    <button type="button" onclick="calcanjongap()">Anjongap</button>
+    <button type="button" onclick="anjongap()">Anjongap</button>
+    <button type="button" onclick="deltaanjongap()">Delta Anjongap</button>
+    <button type="button" onclick="deltaanjongapHCO3()">Delta Anjongap + HCO3</button>
+    <button type="button" onclick="deltaanjongapHCO3tolk()">Delta Anjongap + HCO3 tolk</button>
     <button type="button" onclick="syrabas()">Tolka blodgas</button>
 
     <p id="demo"></p>
@@ -66,13 +70,13 @@
                 document.getElementById("demo").innerHTML = "Metabol acidos";
             } else if (pHvalue < 7.35 && pCO2value > 6 && BEvalue > -3) {
                 document.getElementById("demo").innerHTML = "Respiratorisk acidos";
-            }
+            } 
             else {
-                document.getElementById("demo").innerHTML = "oklart";
+                document.getElementById("demo").innerHTML = "oklart, fyll i pH, pCO2 och BE / HCO3";
             }
         }
         //om ph < 7,35, och pCO2 > 6, och BE är över -3 => resp acidos
-        function calcanjongap() {
+        function anjongap() {
             // Get the value of the input field with id="numb"
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
@@ -81,6 +85,37 @@
             console.log(anjongapresult)
             // If x is Not a Number or less than one or greater than 10
             document.getElementById("demo").innerHTML = anjongapresult;
+        }
+        function deltaanjongap() {
+            let navalue = document.getElementById("Na").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let clvalue = document.getElementById("Cl").value;
+            let deltaanjongapresult = navalue - hco3value - clvalue - 12
+            console.log(deltaanjongapresult)
+            document.getElementById("demo").innerHTML = deltaanjongapresult;
+        }
+        function deltaanjongapHCO3() {
+            let navalue = document.getElementById("Na").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let clvalue = document.getElementById("Cl").value;
+            let deltaanjongapHCO3result = navalue - clvalue - 12
+            console.log(deltaanjongapHCO3result)
+            document.getElementById("demo").innerHTML = deltaanjongapHCO3result;
+        }
+        function deltaanjongapHCO3tolk() {
+            let navalue = document.getElementById("Na").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let clvalue = document.getElementById("Cl").value;
+            let deltaanjongapHCO3result = navalue - clvalue - 12
+            if (deltaanjongapHCO3result < 27.1 && deltaanjongapHCO3result > 20.9) {
+                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för ingen ytterligare metabol rubbning";
+            } else if (deltaanjongapHCO3result < 20.9) {
+                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
+            } else if (deltaanjongapHCO3result > 27.1) {
+                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för samtidig samtidig metabol alkalos ";
+            } else {
+                document.getElementById("demo").innerHTML = "oklart";
+        }
         }
     </script>
 
