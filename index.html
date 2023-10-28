@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <th>K</th>
-            <th><input id="K" type="number"></th>
+            <th><input id="Ka" type="number"></th>
         </tr>
         <tr>
             <th>Cl</th>
@@ -53,13 +53,39 @@
         </tr>
     </table>
 
-    <button type="button" onclick="anjongap()">Anjongap</button>
-    <button type="button" onclick="deltaanjongap()">Delta Anjongap</button>
-    <button type="button" onclick="deltaanjongapHCO3()">Delta Anjongap + HCO3</button>
-    <button type="button" onclick="deltaanjongapHCO3tolk()">Delta Anjongap + HCO3 tolk</button>
-    <button type="button" onclick="syrabas()">Tolka blodgas</button>
+    <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();SID();deltaSID();deltaLaktat();deltaAlbumin();SIG();deltaSIG();aceofbase()">Analysera</button>
 
-    <p id="demo"></p>
+    <p id="demo" style="font-weight:bold;"></p>
+    <span id="demo2"></span><br>
+    <span id="demo3"></span><br>
+    <span id="demo4"></span><br>
+    <span id="demo5" style="font-weight:bold;"></span><br>
+    <span id="demo6"></span><br>
+    <span id="demo10"></span><br><br>
+
+    <table border="1px solid black">
+        <tr>
+            <td><span id="demo7"></span></td>
+            <td><span id="demo71"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo8"></span></td>
+            <td><span id="demo81"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo9"></span></td>
+            <td><span id="demo91"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo11"></span></td>
+            <td><span id="demo111"></span></td>
+        </tr>
+        <tr>
+            <th><span id="demo12"></span></th>
+            <th><span id="demo121"></span></th>
+        </tr>
+    </table>
+    <p> Källor: Swesems PM for tolkning av blodgas. Ace of Basekortet</p>
 
     <script>
         function syrabas() {
@@ -75,16 +101,13 @@
                 document.getElementById("demo").innerHTML = "oklart, fyll i pH, pCO2 och BE / HCO3";
             }
         }
-        //om ph < 7,35, och pCO2 > 6, och BE är över -3 => resp acidos
         function anjongap() {
-            // Get the value of the input field with id="numb"
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
             let clvalue = document.getElementById("Cl").value;
             let anjongapresult = navalue - hco3value - clvalue
             console.log(anjongapresult)
-            // If x is Not a Number or less than one or greater than 10
-            document.getElementById("demo").innerHTML = anjongapresult;
+            document.getElementById("demo2").innerHTML = "Anjongap: " + anjongapresult;
         }
         function deltaanjongap() {
             let navalue = document.getElementById("Na").value;
@@ -92,7 +115,7 @@
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapresult = navalue - hco3value - clvalue - 12
             console.log(deltaanjongapresult)
-            document.getElementById("demo").innerHTML = deltaanjongapresult;
+            document.getElementById("demo3").innerHTML = "Delta anjongap: " + deltaanjongapresult;
         }
         function deltaanjongapHCO3() {
             let navalue = document.getElementById("Na").value;
@@ -100,7 +123,7 @@
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapHCO3result = navalue - clvalue - 12
             console.log(deltaanjongapHCO3result)
-            document.getElementById("demo").innerHTML = deltaanjongapHCO3result;
+            document.getElementById("demo4").innerHTML = "Delta anjongap + HCO3: " + deltaanjongapHCO3result;
         }
         function deltaanjongapHCO3tolk() {
             let navalue = document.getElementById("Na").value;
@@ -108,14 +131,89 @@
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapHCO3result = navalue - clvalue - 12
             if (deltaanjongapHCO3result < 27.1 && deltaanjongapHCO3result > 20.9) {
-                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för ingen ytterligare metabol rubbning";
+                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för ingen ytterligare metabol rubbning";
             } else if (deltaanjongapHCO3result < 20.9) {
-                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
+                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
             } else if (deltaanjongapHCO3result > 27.1) {
-                document.getElementById("demo").innerHTML = "Delta AG + HCO3 talar för samtidig samtidig metabol alkalos ";
+                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig samtidig metabol alkalos ";
             } else {
-                document.getElementById("demo").innerHTML = "oklart";
+                document.getElementById("demo5").innerHTML = "oklart";
         }
+        }
+        function SID() {
+            let navalue = document.getElementById("Na").value;
+            let kvalue = document.getElementById("Ka").value;
+            let clvalue = document.getElementById("Cl").value;
+            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
+            console.log(SIDresult)
+            document.getElementById("demo6").innerHTML = "SID: " + SIDresult;
+        }
+        function deltaSID() {
+            let navalue = document.getElementById("Na").value;
+            let kvalue = document.getElementById("Ka").value;
+            let clvalue = document.getElementById("Cl").value;
+            let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
+            console.log(deltaSIDresult)
+            document.getElementById("demo7").innerHTML = "Delta-SID ([Na]+[K]-[Cl]) - 42: ";
+            document.getElementById("demo71").innerHTML = deltaSIDresult + " mEq";
+        }
+        function deltaLaktat() {
+            let laktatvalue = document.getElementById("Laktat").value;
+            let deltaLaktatresult = (laktatvalue*10 - 1*10) / 10
+            console.log(deltaLaktatresult)
+            document.getElementById("demo8").innerHTML = "Delta laktat (Laktat - 1): ";
+            document.getElementById("demo81").innerHTML = deltaLaktatresult + " mEq";
+        }
+        function deltaAlbumin() {
+            let albuminvalue = document.getElementById("Albumin").value;
+            let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
+            console.log(deltaAlbuminresult)
+            document.getElementById("demo9").innerHTML = "Delta Albumin (10 - ([Albumin]/4): ";
+            document.getElementById("demo91").innerHTML = " " + deltaAlbuminresult + " mEq ";
+        }
+        function SIG() {
+            let navalue = document.getElementById("Na").value;
+            let kvalue = document.getElementById("Ka").value;
+            let clvalue = document.getElementById("Cl").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let albuminvalue = document.getElementById("Albumin").value;
+            let laktatvalue = document.getElementById("Laktat").value;
+            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
+            let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
+            console.log(SIGresult)
+            document.getElementById("demo10").innerHTML = "SIG: " + SIGresult;
+        }
+        function deltaSIG() {
+            let navalue = document.getElementById("Na").value;
+            let kvalue = document.getElementById("Ka").value;
+            let clvalue = document.getElementById("Cl").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let albuminvalue = document.getElementById("Albumin").value;
+            let laktatvalue = document.getElementById("Laktat").value;
+            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
+            let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
+            let deltaSIGresult = (7*10 - SIGresult*10) / 10
+            console.log(deltaSIGresult)
+            document.getElementById("demo11").innerHTML = "Delta SIG: ";
+            document.getElementById("demo111").innerHTML = " " + deltaSIGresult + " mEq ";
+        }
+        function aceofbase() {
+            let navalue = document.getElementById("Na").value;
+            let kvalue = document.getElementById("Ka").value;
+            let clvalue = document.getElementById("Cl").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let albuminvalue = document.getElementById("Albumin").value;
+            let laktatvalue = document.getElementById("Laktat").value;
+            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
+            let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
+            let deltaLaktatresult = (laktatvalue*10 - 1*10) / 10
+            let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
+            let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
+            let deltaSIGresult = (7*10 - SIGresult*10) / 10
+            let aceofbaseresult = (+deltaSIDresult*10 + +deltaLaktatresult*10 + +deltaAlbuminresult*10 + +deltaSIGresult*10) / 10
+            console.log(aceofbaseresult)
+            document.getElementById("demo12").innerHTML = "Summa: ";
+            document.getElementById("demo121").innerHTML = " " + aceofbaseresult + " mEq ";
         }
     </script>
 
