@@ -13,56 +13,56 @@
         <tr>
             <th>pH</th>
             <th><input id="pH" type="number"></th>
-            <td>7,35 - 7,44</td>
+            <td>7,38 - 7,47</td>
         </tr>
         <tr>
             <th>pCO2</th>
             <th><input id="pCO2" type="number"></th>
-            <td>4,0 - 6,0 kPa</td>
+            <td>4,3 - 6,0 kPa</td>
         </tr>
         <tr>
             <th>pO2</th>
             <th><input id="pO2" type="number"></th>
-            <td>7,4 - 11,5 kPa</td>
+            <td>10,0 - 15,0 kPa</td>
         </tr>
         <tr>
             <th>BE</th>
             <th><input id="BE"></th>
-            <td>-3 - 3</td>
+            <td>-3 - 3 mmol/L</td>
         </tr>
         <tr>
             <th>HCO3</th>
             <th><input id="HCO3" type="number"></th>
-            <td>22 - 27</td>
+            <td>20,0 - 27,0 mmol/L</td>
         </tr>
         <tr>
             <th>Na</th>
             <th><input id="Na" type="number"></th>
-            <td>134 - 144</td>
+            <td>137 - 145 mmol/L</td>
         </tr>
         <tr>
             <th>K</th>
             <th><input id="Ka" type="number"></th>
-            <td>3,5 - 4,5</td>
+            <td>3,5 - 4,5 mmol/L</td>
         </tr>
         <tr>
             <th>Cl</th>
             <th><input id="Cl" type="number"></th>
-            <td>90 - 110</td>
+            <td>98 - 109 mmol/L</td>
         </tr>
         <tr>
             <th>Laktat</th>
             <th><input id="Laktat" type="number"></th>
-            <td>0 - 1,1</td>
+            <td>0,6 - 2,4 mmol/L</td>
         </tr>
         <tr>
             <th>Albumin</th>
             <th><input id="Albumin" type="number"></th>
-            <td>32 - 45</td>
+            <td>32 - 45 g/L</td>
         </tr>
     </table>
 
-    <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();SID();deltaSID();deltaLaktat();deltaAlbumin();SIG();deltaSIG();aceofbase();kompensation()">Analysera</button>
+    <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();deltaSID();deltaLaktat();deltaAlbumin();deltaSIG();aceofbase();kompensation()">Analysera</button>
     
     <p id="demo" style="font-weight:bold;"></p>
     <span id="komp0"></span>
@@ -93,39 +93,45 @@
         </tr>
     </table>
     <br>
+    <span id="demo212"></span>
     <table border="1px solid black">
         <tr>
             <td><span id="demo2"></span></td>
+            <td><span id="demo21"></span></td>
         </tr>
         <tr>
             <td><span id="demo3"></span></td>
+            <td><span id="demo31"></span></td>
         </tr>
         <tr>
             <td><span id="demo4"></span></td>
+            <td><span id="demo41"></span></td>
         </tr>
         <tr>
             <td><span id="demo5" style="font-weight:bold;"></span></td>
         </tr>
     </table><br>
-    <span id="demo6"></span><br>
-    <span id="demo10"></span><br><br>
-
+    <span id="demo122"></span>
     <table border="1px solid black">
         <tr>
             <td><span id="demo7"></span></td>
             <td><span id="demo71"></span></td>
+            <td><span id="demo72"></span></td>
         </tr>
         <tr>
             <td><span id="demo8"></span></td>
             <td><span id="demo81"></span></td>
+            <td><span id="demo82"></span></td>
         </tr>
         <tr>
             <td><span id="demo9"></span></td>
             <td><span id="demo91"></span></td>
+            <td><span id="demo92"></span></td>
         </tr>
         <tr>
             <td><span id="demo11"></span></td>
             <td><span id="demo111"></span></td>
+            <td><span id="demo112"></span></td>
         </tr>
         <tr>
             <th><span id="demo12"></span></th>
@@ -156,6 +162,8 @@
             let anjongapresult = (navalue*10 - hco3value*10 - clvalue*10) / 10
             console.log(anjongapresult)
             document.getElementById("demo2").innerHTML = "Anjongap: " + anjongapresult;
+            document.getElementById("demo21").innerHTML = "[Na] – ([Cl] + [HCO3])";
+            document.getElementById("demo212").innerHTML = "Beräkning av klassiskt anjongap för att underlätta diagnostik vid metabola rubbningar";
         }
         function deltaanjongap() {
             let navalue = document.getElementById("Na").value;
@@ -164,6 +172,7 @@
             let deltaanjongapresult = (navalue*10 - hco3value*10 - clvalue*10 - 12*10) / 10
             console.log(deltaanjongapresult)
             document.getElementById("demo3").innerHTML = "Delta anjongap: " + deltaanjongapresult;
+            document.getElementById("demo31").innerHTML = "Anjongap - 12";
         }
         function deltaanjongapHCO3() {
             let navalue = document.getElementById("Na").value;
@@ -172,17 +181,18 @@
             let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
             console.log(deltaanjongapHCO3result)
             document.getElementById("demo4").innerHTML = "Delta anjongap + HCO3: " + deltaanjongapHCO3result;
+            document.getElementById("demo41").innerHTML = "Delta anjongap + HCO3";
         }
         function deltaanjongapHCO3tolk() {
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
-            if (deltaanjongapHCO3result < 27.1 && deltaanjongapHCO3result > 20.9) {
+            if (deltaanjongapHCO3result <= 27 && deltaanjongapHCO3result >= 21) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för ingen ytterligare metabol rubbning";
-            } else if (deltaanjongapHCO3result < 20.9) {
+            } else if (deltaanjongapHCO3result < 21) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
-            } else if (deltaanjongapHCO3result > 27.1) {
+            } else if (deltaanjongapHCO3result > 27) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig samtidig metabol alkalos ";
             } else {
                 document.getElementById("demo5").innerHTML = "oklart";
@@ -202,22 +212,25 @@
             let clvalue = document.getElementById("Cl").value;
             let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
             console.log(deltaSIDresult)
-            document.getElementById("demo7").innerHTML = "Delta-SID ([Na]+[K]-[Cl]) - 42: ";
+            document.getElementById("demo7").innerHTML = "Delta-SID ";
             document.getElementById("demo71").innerHTML = deltaSIDresult + " mEq";
+            document.getElementById("demo72").innerHTML = "([Na]+[K]-[Cl]) - 42:";
         }
         function deltaLaktat() {
             let laktatvalue = document.getElementById("Laktat").value;
-            let deltaLaktatresult = (laktatvalue*10 - 1*10) / 10
+            let deltaLaktatresult = (1*10 - laktatvalue*10) / 10
             console.log(deltaLaktatresult)
-            document.getElementById("demo8").innerHTML = "Delta laktat (Laktat - 1): ";
+            document.getElementById("demo8").innerHTML = "Delta laktat ";
             document.getElementById("demo81").innerHTML = deltaLaktatresult + " mEq";
+            document.getElementById("demo82").innerHTML = "1 - [Lac]";
         }
         function deltaAlbumin() {
             let albuminvalue = document.getElementById("Albumin").value;
             let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
             console.log(deltaAlbuminresult)
-            document.getElementById("demo9").innerHTML = "Delta Albumin (10 - ([Albumin]/4): ";
+            document.getElementById("demo9").innerHTML = "Delta Albumin ";
             document.getElementById("demo91").innerHTML = " " + deltaAlbuminresult + " mEq ";
+            document.getElementById("demo92").innerHTML = " (10 - ([Albumin] x 0,25): ";
         }
         function SIG() {
             let navalue = document.getElementById("Na").value;
@@ -244,6 +257,7 @@
             console.log(deltaSIGresult)
             document.getElementById("demo11").innerHTML = "Delta SIG: ";
             document.getElementById("demo111").innerHTML = " " + deltaSIGresult + " mEq ";
+            document.getElementById("demo112").innerHTML = "7 - SIG; SIG = SID – ([HCO3] + ([Alb] x 0.25) + [Lac])";
         }
         function aceofbase() {
             let navalue = document.getElementById("Na").value;
@@ -252,6 +266,7 @@
             let hco3value = document.getElementById("HCO3").value;
             let albuminvalue = document.getElementById("Albumin").value;
             let laktatvalue = document.getElementById("Laktat").value;
+            let BEvalue = document.getElementById("BE").value;
             let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
             let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
             let deltaLaktatresult = (laktatvalue*10 - 1*10) / 10
@@ -260,15 +275,17 @@
             let deltaSIGresult = (7*10 - SIGresult*10) / 10
             let aceofbaseresult = (+deltaSIDresult*10 + +deltaLaktatresult*10 + +deltaAlbuminresult*10 + +deltaSIGresult*10) / 10
             console.log(aceofbaseresult)
-            document.getElementById("demo12").innerHTML = "Summa: ";
+            document.getElementById("demo122").innerHTML = "Ace of Base, en tolkningsmetod av metabola rubbningar som baseras på Stewarts modell"
+            document.getElementById("demo12").innerHTML = "Summa: (Kan korreleras mot BE)";
             document.getElementById("demo121").innerHTML = " " + aceofbaseresult + " mEq ";
+           //document.getElementById("demo122").innerHTML = " Summan" + aceofbaseresult + " mEq kan korreleras mot BE" + BEvalue;
         }
         function kompensation() {
             let hco3value = document.getElementById("HCO3").value;
             let pCO2value = document.getElementById("pCO2").value;
             let Arespacidkompresult = (0.75 * (pCO2value - 5,3)) + +24
             console.log(Arespacidkompresult)
-            document.getElementById("komp0").innerHTML = "Tabell över förväntad kompensation. Ett värde långt ifrån förväntat kan tala för flera parallella rubbningar."
+            document.getElementById("komp0").innerHTML = "Tabell över förväntad kompensation vid olika primära syra-basrubbningar. Ett värde långt ifrån förväntat kan tala för flera parallella rubbningar."
             document.getElementById("komp1").innerHTML = "Akut Respiratorisk Acidos";
             document.getElementById("komp2").innerHTML = "Förväntat HCO3: " + Arespacidkompresult.toFixed(1);
             let Arespalkkompresult = 1.5 * (pCO2value - 5.3) + +24
