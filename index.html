@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Blodgasanalys</title>
 </head>
-
 <body>
 
     <h1>Blodgasanalys</h1>
@@ -64,9 +62,9 @@
 
     <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();deltaSID();deltaLaktat();deltaAlbumin();deltaSIG();aceofbase();kompensation()">Analysera</button>
     
-    <p id="demo" style="font-weight:bold;"></p>
+    <br><br><span id="demo01"></span><br><span id="demo" style="font-weight:bold;"></span><br><br>
     <span id="komp0"></span>
-    <table border="1px solid black">
+    <table border="1px solid black";>
         <tr>
             <td><span id="komp1"></span></td>
             <td><span id="komp2"></span></td>
@@ -138,23 +136,85 @@
             <th><span id="demo121"></span></th>
         </tr>
     </table>
-    <p> Källor: Swesems PM for tolkning av blodgas. Ace of Basekortet</p>
+    <br><span> Källor: Swesems PM "Blodgastolkning". https://slf.se/swesem/app/uploads/2019/03/blodgastolkning-190211.pdf </span><br><span> "Ace of Base" https://akuten.li/ace-of-base-blodgastolkning/</span>
 
     <script>
         function syrabas() {
             let pHvalue = document.getElementById("pH").value;
             let pCO2value = document.getElementById("pCO2").value;
             let BEvalue = document.getElementById("BE").value;
-            if (pHvalue < 7.35 && pCO2value < 6 && BEvalue < -3) {
-                document.getElementById("demo").innerHTML = "Metabol acidos";
-            } else if (pHvalue < 7.35 && pCO2value > 6 && BEvalue > -3 || pHvalue < 7.35 && pCO2value > 6 && BEvalue > 21.99) {
+            let hco3value = document.getElementById("HCO3").value;
+            document.getElementById("demo01").innerHTML = "Förenklad analys enligt Base Excess-metoden:";
+            if (pHvalue < 7.38 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Acidemi, sannolikt metabol acidos men ej visualiserad med BE. Bedöm ace of base och anjongap.";
+            } else if (pHvalue < 7.38 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Metabol acidos. Ingen respiratorisk kompensation.";
+            } else if (pHvalue < 7.38 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Acidemi. Bedöm anjongap, ace of base och gör manuell bedömning.";
+            } else if (pHvalue < 7.38 && pCO2value < 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Acidemi, sannolikt metabol acidos men ej visualiserad med BE. Bedöm ace of base och anjongap. Respiratorisk kompensation.";
+            } else if (pHvalue < 7.38 && pCO2value < 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Metabol acidos. Respiratorisk kompensation.";
+            } else if (pHvalue < 7.38 && pCO2value < 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Acidemi. Oklart fall. Bedöm anjongap, SID, SIG etc.";
+            } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue > -3) {
                 document.getElementById("demo").innerHTML = "Respiratorisk acidos";
-            } else if (pHvalue < 7.35 && pCO2value > 6 && BEvalue < -3.1 || pHvalue < 7.35 && pCO2value > 6 && BEvalue < 22) {
+            } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue < -3) {
                 document.getElementById("demo").innerHTML = "Metabol och respiratorisk acidos";
+            } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Respiratorisk acidos med metabol kompensation";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value < 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value < 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Metabol acidos och respiratorisk alkalos. Antingen parallella rubbningar eller fullt kompenserad rubbning.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value < 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue > -3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Metabol acidos och respiratorisk alkalos. Antingen parallella rubbningar eller fullt kompenserad rubbning.";
+            } else if (pHvalue > 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Alkalemi. Bedöm Ace of Base och anjongap.";
+            } else if (pHvalue > 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Alkalemi. Oklart fall. Bedöm Ace of Base och anjongap.";
+            } else if (pHvalue > 7.42 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Metabol alkalos. Ingen kompensation.";
+            } else if (pHvalue > 7.42 && pCO2value < 4.6 && BEvalue >= -3 && BEvalue <= 3) {
+                document.getElementById("demo").innerHTML = "Respiratorisk alkalos. Ingen kompensation.";
+            } else if (pHvalue > 7.42 && pCO2value < 4.6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Respiratorisk alkalos med metabol kompensation.";
+            } else if (pHvalue > 7.42 && pCO2value < 4.6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Metabol och respiratorisk alkalos.";
+            } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue > -3) {
+                document.getElementById("demo").innerHTML = "Alkalemi. Oklart fall. Bedöm Ace of Base och anjongap.";
+            } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue < -3) {
+                document.getElementById("demo").innerHTML = "Alkalemi. Oklart fall. Bedöm Ace of Base och anjongap.";
+            } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue > 3) {
+                document.getElementById("demo").innerHTML = "Metabol alkalos. Respiratorisk kompensation.";
             } else {
                 document.getElementById("demo").innerHTML = "oklart, fyll i pH, pCO2 och BE / HCO3";
             }
         }
+        // ph låg pHvalue < 7.38
+        // ph norm pHvalue >= 7.38 && pHvalue <= 7.42
+        // ph hög pHvalue > 7.42
+        // pco2 låg pCO2value < 4.6
+        // pco2 norm pCO2value <= 6 && pCO2value >= 4.6 
+        // pCO2 hög: pCO2value > 6
+        // BE låg: BEvalue < -3
+        // BE norm  BEvalue >= -3 && BEvalue <= 3
+        // BE höög  BEvalue > 3
+        // hco3 låg hco3value < 22
+        // hco3 norm hco3value >= 22 && hco3value <= 27
+        // hco3 hög hco3value > 27
         function anjongap() {
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
@@ -189,7 +249,7 @@
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
             if (deltaanjongapHCO3result <= 27 && deltaanjongapHCO3result >= 21) {
-                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för ingen ytterligare metabol rubbning";
+                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar inte för ytterligare metabol rubbning";
             } else if (deltaanjongapHCO3result < 21) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
             } else if (deltaanjongapHCO3result > 27) {
@@ -269,7 +329,7 @@
             let BEvalue = document.getElementById("BE").value;
             let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
             let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
-            let deltaLaktatresult = (laktatvalue*10 - 1*10) / 10
+            let deltaLaktatresult = (1*10 - laktatvalue*10) / 10
             let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
             let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
             let deltaSIGresult = (7*10 - SIGresult*10) / 10
