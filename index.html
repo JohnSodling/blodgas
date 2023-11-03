@@ -2,11 +2,85 @@
 <html>
 <head>
     <title>Blodgasanalys</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    {
+  box-sizing: border-box;
+}
+header {
+  background-color: #B22222;
+  padding: 10px;
+  text-align: left;
+  font-size: 25px;
+  color: white;
+    }
+    section {
+  display: -webkit-flex;
+  display: flex;
+}
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+article {
+  -webkit-flex: 7;
+  -ms-flex: 7;
+  flex: 7;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+aside {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  background-color: #ccc;
+  padding: 10px;
+}
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+footer {
+  background-color: #f1f1f1;
+  padding: 15px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+#table1 {
+  padding: 5px;
+  border: 1px solid #000000;
+}
+</style>
+</style>
 </head>
 <body>
-
-    <h1>Blodgasanalys</h1>
+<header>
+    <h2>Blodgasanalys</h2>
     <p>Analysverktyg för blodgastolkning. Betaversion.</p>
+</header>
+<section>
+<nav>
+    <li><a href="#">Blodgasanalys</a></li>
+    <li><a href="#">Ace of Base</a></li>
+</nav>
+<article>
     <table>
         <tr>
             <th>pH</th>
@@ -64,80 +138,86 @@
     
     <br><br><span id="demo01"></span><br><span id="demo" style="font-weight:bold;"></span><br><br>
     <span id="komp0"></span>
-    <table border="1px solid black";>
+    <table>
         <tr>
-            <td><span id="komp1"></span></td>
-            <td><span id="komp2"></span></td>
+            <td id="table1"><span id="komp1"></span></td>
+            <td id="table1"><span id="komp2"></span></td>
         </tr>
         <tr>
-            <td><span id="komp3"></span></td>
-            <td><span id="komp4"></span></td>
+            <td id="table1"><span id="komp3"></span></td>
+            <td id="table1"><span id="komp4"></span></td>
         </tr>
         <tr>
-            <td><span id="komp5"></span></td>
-            <td><span id="komp6"></span></td>
+            <td id="table1"><span id="komp5"></span></td>
+            <td id="table1"><span id="komp6"></span></td>
         </tr>
         <tr>
-            <td><span id="komp7"></span></td>
-            <td><span id="komp8"></span></td>
+            <td id="table1"><span id="komp7"></span></td>
+            <td id="table1"><span id="komp8"></span></td>
         </tr>
         <tr>
-            <td><span id="komp9"></span></td>
-            <td><span id="komp10"></span></td>
+            <td id="table1"><span id="komp9"></span></td>
+            <td id="table1"><span id="komp10"></span></td>
         </tr>
         <tr>
-            <td><span id="komp11"></span></td>
-            <td><span id="komp12"></span></td>
+            <td id="table1"><span id="komp11"></span></td>
+            <td id="table1"><span id="komp12"></span></td>
         </tr>
     </table>
     <br>
     <span id="demo212"></span>
     <table border="1px solid black">
         <tr>
-            <td><span id="demo2"></span></td>
-            <td><span id="demo21"></span></td>
+            <td id="table1"><span id="demo2"></span></td>
+            <td id="table1"><span id="demo21"></span></td>
         </tr>
         <tr>
-            <td><span id="demo3"></span></td>
-            <td><span id="demo31"></span></td>
+            <td id="table1"><span id="demo3"></span></td>
+            <td id="table1"><span id="demo31"></span></td>
         </tr>
         <tr>
-            <td><span id="demo4"></span></td>
-            <td><span id="demo41"></span></td>
+            <td id="table1"><span id="demo4"></span></td>
+            <td id="table1"><span id="demo41"></span></td>
         </tr>
         <tr>
-            <td><span id="demo5" style="font-weight:bold;"></span></td>
+            <td id="table1"><span id="demo5" style="font-weight:bold;"></span></td>
         </tr>
     </table><br>
     <span id="demo122"></span>
     <table border="1px solid black">
         <tr>
-            <td><span id="demo7"></span></td>
-            <td><span id="demo71"></span></td>
-            <td><span id="demo72"></span></td>
+            <td id="table1"><span id="demo7"></span></td>
+            <td id="table1"><span id="demo71"></span></td>
+            <td id="table1"><span id="demo72"></span></td>
         </tr>
         <tr>
-            <td><span id="demo8"></span></td>
-            <td><span id="demo81"></span></td>
-            <td><span id="demo82"></span></td>
+            <td id="table1"><span id="demo8"></span></td>
+            <td id="table1"><span id="demo81"></span></td>
+            <td id="table1"><span id="demo82"></span></td>
         </tr>
         <tr>
-            <td><span id="demo9"></span></td>
-            <td><span id="demo91"></span></td>
-            <td><span id="demo92"></span></td>
+            <td id="table1"><span id="demo9"></span></td>
+            <td id="table1"><span id="demo91"></span></td>
+            <td id="table1"><span id="demo92"></span></td>
         </tr>
         <tr>
-            <td><span id="demo11"></span></td>
-            <td><span id="demo111"></span></td>
-            <td><span id="demo112"></span></td>
+            <td id="table1"><span id="demo11"></span></td>
+            <td id="table1"><span id="demo111"></span></td>
+            <td id="table1"><span id="demo112"></span></td>
         </tr>
         <tr>
-            <th><span id="demo12"></span></th>
-            <th><span id="demo121"></span></th>
+            <th id="table1"><span id="demo12"></span></th>
+            <th id="table1"><span id="demo121"></span></th>
         </tr>
     </table>
+</article>
+<aside>
+    <p>testar lite</p>
+</aside>
+</section>
+<footer>
     <br><span> Källor: Swesems PM "Blodgastolkning". https://slf.se/swesem/app/uploads/2019/03/blodgastolkning-190211.pdf </span><br><span> "Ace of Base" https://akuten.li/ace-of-base-blodgastolkning/</span>
-
+</footer>
     <script>
         function syrabas() {
             let pHvalue = document.getElementById("pH").value;
