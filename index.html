@@ -44,13 +44,6 @@ aside {
   background-color: #ccc;
   padding: 10px;
 }
-/* Style the footer */
-footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
 footer {
   background-color: #f1f1f1;
   padding: 15px;
@@ -64,8 +57,8 @@ footer {
   }
 }
 #table1 {
-  padding: 5px;
-  border: 1px solid #000000;
+    padding: 5px;
+    border: 1px solid #000000;
 }
 </style>
 </style>
@@ -83,85 +76,91 @@ footer {
 <article>
     <table>
         <tr>
-            <th>pH</th>
+            <th align="right">pH</th>
             <th><input id="pH" type="number"></th>
             <td>7,38 - 7,47</td>
         </tr>
         <tr>
-            <th>pCO2</th>
+            <th align="right">pCO2</th>
             <th><input id="pCO2" type="number"></th>
             <td>4,3 - 6,0 kPa</td>
         </tr>
         <tr>
-            <th>pO2</th>
+            <th align="right">pO2</th>
             <th><input id="pO2" type="number"></th>
             <td>10,0 - 15,0 kPa</td>
         </tr>
         <tr>
-            <th>BE</th>
+            <th align="right">BE</th>
             <th><input id="BE"></th>
             <td>-3 - 3 mmol/L</td>
         </tr>
         <tr>
-            <th>HCO3</th>
+            <th align="right">HCO3</th>
             <th><input id="HCO3" type="number"></th>
             <td>20,0 - 27,0 mmol/L</td>
         </tr>
         <tr>
-            <th>Na</th>
+            <th align="right">Na</th>
             <th><input id="Na" type="number"></th>
             <td>137 - 145 mmol/L</td>
         </tr>
         <tr>
-            <th>K</th>
+            <th align="right">K</th>
             <th><input id="Ka" type="number"></th>
             <td>3,5 - 4,5 mmol/L</td>
         </tr>
         <tr>
-            <th>Cl</th>
+            <th align="right">Cl</th>
             <th><input id="Cl" type="number"></th>
             <td>98 - 109 mmol/L</td>
         </tr>
         <tr>
-            <th>Laktat</th>
+            <th align="right">Laktat</th>
             <th><input id="Laktat" type="number"></th>
             <td>0,6 - 2,4 mmol/L</td>
         </tr>
         <tr>
-            <th>Albumin</th>
+            <th align="right">Albumin</th>
             <th><input id="Albumin" type="number"></th>
             <td>32 - 45 g/L</td>
         </tr>
-    </table>
+    </table><br>
 
     <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();deltaSID();deltaLaktat();deltaAlbumin();deltaSIG();aceofbase();kompensation()">Analysera</button>
     
     <br><br><span id="demo01"></span><br><span id="demo" style="font-weight:bold;"></span><br><br>
     <span id="komp0"></span>
-    <table>
+    <table border="1px solid black">
         <tr>
             <td id="table1"><span id="komp1"></span></td>
             <td id="table1"><span id="komp2"></span></td>
+            <td id="table1"><span id="komp21"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="komp3"></span></td>
             <td id="table1"><span id="komp4"></span></td>
+            <td id="table1"><span id="komp41"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="komp5"></span></td>
             <td id="table1"><span id="komp6"></span></td>
+            <td id="table1"><span id="komp61"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="komp7"></span></td>
             <td id="table1"><span id="komp8"></span></td>
+            <td id="table1"><span id="komp81"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="komp9"></span></td>
             <td id="table1"><span id="komp10"></span></td>
+            <td id="table1"><span id="komp101"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="komp11"></span></td>
             <td id="table1"><span id="komp12"></span></td>
+            <td id="table1"><span id="komp121"></span></td>
         </tr>
     </table>
     <br>
@@ -169,20 +168,21 @@ footer {
     <table border="1px solid black">
         <tr>
             <td id="table1"><span id="demo2"></span></td>
+            <td id="table1"><span id="demo20"></span></td>
             <td id="table1"><span id="demo21"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="demo3"></span></td>
+            <td id="table1"><span id="demo30"></span></td>
             <td id="table1"><span id="demo31"></span></td>
         </tr>
         <tr>
             <td id="table1"><span id="demo4"></span></td>
+            <td id="table1"><span id="demo40"></span></td>
             <td id="table1"><span id="demo41"></span></td>
-        </tr>
-        <tr>
-            <td id="table1"><span id="demo5" style="font-weight:bold;"></span></td>
-        </tr>
-    </table><br>
+        </table>
+<span id="demo5" style="font-weight:bold;"></span>
+    <br><br>
     <span id="demo122"></span>
     <table border="1px solid black">
         <tr>
@@ -213,6 +213,8 @@ footer {
 </article>
 <aside>
     <p>testar lite</p>
+    <button type="button" onclick="respacidmnemo()">resp</button><br>
+    <p id="mnemo1"></p>
 </aside>
 </section>
 <footer>
@@ -301,7 +303,8 @@ footer {
             let clvalue = document.getElementById("Cl").value;
             let anjongapresult = (navalue*10 - hco3value*10 - clvalue*10) / 10
             console.log(anjongapresult)
-            document.getElementById("demo2").innerHTML = "Anjongap: " + anjongapresult;
+            document.getElementById("demo2").innerHTML = "Anjongap: ";
+            document.getElementById("demo20").innerHTML = anjongapresult;
             document.getElementById("demo21").innerHTML = "[Na] – ([Cl] + [HCO3])";
             document.getElementById("demo212").innerHTML = "Beräkning av klassiskt anjongap för att underlätta diagnostik vid metabola rubbningar";
         }
@@ -311,7 +314,8 @@ footer {
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapresult = (navalue*10 - hco3value*10 - clvalue*10 - 12*10) / 10
             console.log(deltaanjongapresult)
-            document.getElementById("demo3").innerHTML = "Delta anjongap: " + deltaanjongapresult;
+            document.getElementById("demo3").innerHTML = "Delta anjongap: ";
+            document.getElementById("demo30").innerHTML = deltaanjongapresult;
             document.getElementById("demo31").innerHTML = "Anjongap - 12";
         }
         function deltaanjongapHCO3() {
@@ -320,7 +324,8 @@ footer {
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
             console.log(deltaanjongapHCO3result)
-            document.getElementById("demo4").innerHTML = "Delta anjongap + HCO3: " + deltaanjongapHCO3result;
+            document.getElementById("demo4").innerHTML = "Delta anjongap + HCO3: ";
+            document.getElementById("demo40").innerHTML = deltaanjongapHCO3result;
             document.getElementById("demo41").innerHTML = "Delta anjongap + HCO3";
         }
         function deltaanjongapHCO3tolk() {
@@ -425,29 +430,38 @@ footer {
             let pCO2value = document.getElementById("pCO2").value;
             let Arespacidkompresult = (0.75 * (pCO2value - 5,3)) + +24
             console.log(Arespacidkompresult)
-            document.getElementById("komp0").innerHTML = "Tabell över förväntad kompensation vid olika primära syra-basrubbningar. Ett värde långt ifrån förväntat kan tala för flera parallella rubbningar."
+            document.getElementById("komp0").innerHTML = "Tabell över förväntad kompensation vid olika primära syra-basrubbningar. Ett värde långt ifrån förväntat kan tala för flera parallella rubbningar. Beräknas mot normalvärde på på pCO2 5,3 kPa och HCO3 24 mmol/L."
             document.getElementById("komp1").innerHTML = "Akut Respiratorisk Acidos";
-            document.getElementById("komp2").innerHTML = "Förväntat HCO3: " + Arespacidkompresult.toFixed(1);
+            document.getElementById("komp2").innerHTML = "Förväntat HCO3: " + Arespacidkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp21").innerHTML = "∆HCO3 = 0,75 x ∆pCO2";
             let Arespalkkompresult = 1.5 * (pCO2value - 5.3) + +24
             console.log(Arespalkkompresult)
             document.getElementById("komp3").innerHTML = "Akut Respiratorisk Alkalos";
-            document.getElementById("komp4").innerHTML = "Förväntat HCO3: " + Arespalkkompresult.toFixed(1);
+            document.getElementById("komp4").innerHTML = "Förväntat HCO3: " + Arespalkkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp41").innerHTML = "∆HCO3 = 1,50 x ∆pCO2";
             let Krespacidkompresult = (2.62 * (pCO2value - 5.3)) + +24
             console.log(Krespacidkompresult)
             document.getElementById("komp5").innerHTML = "Kronisk Respiratorisk Acidos";
-            document.getElementById("komp6").innerHTML = "Förväntat HCO3: " + Krespacidkompresult.toFixed(1);
+            document.getElementById("komp6").innerHTML = "Förväntat HCO3: " + Krespacidkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp61").innerHTML = "∆HCO3 = 2,62 x ∆pCO2 ";
             let Krespalkkompresult = (3*10/10 * (pCO2value - 5.3)) + +24*10/10
             console.log(Krespalkkompresult)
             document.getElementById("komp7").innerHTML = "Kronisk Respiratorisk Alkalos";
-            document.getElementById("komp8").innerHTML = "Förväntat HCO3: " + Krespalkkompresult.toFixed(1);
+            document.getElementById("komp8").innerHTML = "Förväntat HCO3: " + Krespalkkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp81").innerHTML = "∆HCO3 = 3,0 x ∆pCO2";
             let metacidkompresult = 0.17 * (hco3value - 24) + +5.3
             console.log(metacidkompresult)
             document.getElementById("komp9").innerHTML = "Metabol acidos";
-            document.getElementById("komp10").innerHTML = "Förväntat pCO2: " + metacidkompresult.toFixed(1);
+            document.getElementById("komp10").innerHTML = "Förväntat pCO2: " + metacidkompresult.toFixed(1) + " kPa";
+            document.getElementById("komp101").innerHTML = "∆pCO2 = 0,17 x ∆HCO3";
             let metalkkompresult = 0.08*10/10 * (hco3value*10/10 - 24*10/10) + +5.3*10/10
             console.log(metalkkompresult)
             document.getElementById("komp11").innerHTML = "Metabol alkalos";
-            document.getElementById("komp12").innerHTML = "Förväntat pCO2: " + metalkkompresult.toFixed(1);
+            document.getElementById("komp12").innerHTML = "Förväntat pCO2: " + metalkkompresult.toFixed(1) + " kPa";
+            document.getElementById("komp121").innerHTML = "∆pCO2 = 0,08 x ∆HCO3";
+        }
+        function respacidmnemo() {
+            document.getElementById("mnemo1").innerHTML = "KOL";
         }
     </script>
 
