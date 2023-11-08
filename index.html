@@ -60,12 +60,53 @@ footer {
     padding: 5px;
     border: 1px solid #000000;
 }
-</style>
+.header {
+    color: green;
+}
+.header {
+    color: white;
+}
+.text-align-right {
+    text-align: right;
+}
+.th-align-right th{
+    text-align: right;
+}
+.hide {
+    display: none;
+}
+#komp-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#komp-table table, #komp-table th, #komp-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#anjon-table {
+    border: 1px solid black;
+    width: 50%;
+}
+#anjon-table table, #anjon-table th, #anjon-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#aceofbase-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#aceofbase-table table, #aceofbase-table th, #aceofbase-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
 </style>
 </head>
 <body>
 <header>
-    <h2>Blodgasanalys</h2>
+    <h2 class="header">Blodgasanalys</h2>
     <p>Analysverktyg för blodgastolkning. Betaversion.</p>
 </header>
 <section>
@@ -74,140 +115,148 @@ footer {
     <li><a href="#">Ace of Base</a></li>
 </nav>
 <article>
-    <table>
+    <table class="th-align-right">
         <tr>
-            <th align="right">pH</th>
+            <th>pH</th>
             <th><input id="pH" type="number"></th>
             <td>7,38 - 7,47</td>
         </tr>
         <tr>
-            <th align="right">pCO2</th>
+            <th>pCO2</th>
             <th><input id="pCO2" type="number"></th>
             <td>4,3 - 6,0 kPa</td>
         </tr>
         <tr>
-            <th align="right">pO2</th>
+            <th>pO2</th>
             <th><input id="pO2" type="number"></th>
             <td>10,0 - 15,0 kPa</td>
         </tr>
         <tr>
-            <th align="right">BE</th>
+            <th>BE</th>
             <th><input id="BE"></th>
             <td>-3 - 3 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">HCO3</th>
+            <th>HCO3</th>
             <th><input id="HCO3" type="number"></th>
             <td>20,0 - 27,0 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">Na</th>
+            <th>Na</th>
             <th><input id="Na" type="number"></th>
             <td>137 - 145 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">K</th>
+            <th>K</th>
             <th><input id="Ka" type="number"></th>
             <td>3,5 - 4,5 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">Cl</th>
+            <th>Cl</th>
             <th><input id="Cl" type="number"></th>
             <td>98 - 109 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">Laktat</th>
+            <th>Laktat</th>
             <th><input id="Laktat" type="number"></th>
             <td>0,6 - 2,4 mmol/L</td>
         </tr>
         <tr>
-            <th align="right">Albumin</th>
+            <th>Albumin</th>
             <th><input id="Albumin" type="number"></th>
             <td>32 - 45 g/L</td>
         </tr>
     </table><br>
 
-    <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();deltaSID();deltaLaktat();deltaAlbumin();deltaSIG();aceofbase();kompensation()">Analysera</button>
+    <button type="button" onclick="syrabas();anjongap();deltaanjongap();deltaanjongapHCO3();deltaanjongapHCO3tolk();deltaSID();deltaLaktat();deltaAlbumin();deltaSIG();aceofbase();kompensation();hideKompTable();hideAnjonTable();hideAceofbaseTable()">Analysera</button>
     
     <br><br><span id="demo01"></span><br><span id="demo" style="font-weight:bold;"></span><br><br>
-    <span id="komp0"></span>
-    <table border="1px solid black">
+    
+    <table class="hide" id="komp-table">
         <tr>
-            <td id="table1"><span id="komp1"></span></td>
-            <td id="table1"><span id="komp2"></span></td>
-            <td id="table1"><span id="komp21"></span></td>
+            <span class="hide" id="komp0"></span>
         </tr>
         <tr>
-            <td id="table1"><span id="komp3"></span></td>
-            <td id="table1"><span id="komp4"></span></td>
-            <td id="table1"><span id="komp41"></span></td>
+            <td><span id="komp1"></span></td>
+            <td><span id="komp2"></span></td>
+            <td><span id="komp21"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="komp5"></span></td>
-            <td id="table1"><span id="komp6"></span></td>
-            <td id="table1"><span id="komp61"></span></td>
+            <td><span id="komp3"></span></td>
+            <td><span id="komp4"></span></td>
+            <td><span id="komp41"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="komp7"></span></td>
-            <td id="table1"><span id="komp8"></span></td>
-            <td id="table1"><span id="komp81"></span></td>
+            <td><span id="komp5"></span></td>
+            <td><span id="komp6"></span></td>
+            <td><span id="komp61"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="komp9"></span></td>
-            <td id="table1"><span id="komp10"></span></td>
-            <td id="table1"><span id="komp101"></span></td>
+            <td><span id="komp7"></span></td>
+            <td><span id="komp8"></span></td>
+            <td><span id="komp81"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="komp11"></span></td>
-            <td id="table1"><span id="komp12"></span></td>
-            <td id="table1"><span id="komp121"></span></td>
+            <td><span id="komp9"></span></td>
+            <td><span id="komp10"></span></td>
+            <td><span id="komp101"></span></td>
+        </tr>
+        <tr>
+            <td><span id="komp11"></span></td>
+            <td><span id="komp12"></span></td>
+            <td><span id="komp121"></span></td>
         </tr>
     </table>
-    <br>
-    <span id="demo212"></span>
-    <table border="1px solid black">
-        <tr>
-            <td id="table1"><span id="demo2"></span></td>
-            <td id="table1"><span id="demo20"></span></td>
-            <td id="table1"><span id="demo21"></span></td>
-        </tr>
-        <tr>
-            <td id="table1"><span id="demo3"></span></td>
-            <td id="table1"><span id="demo30"></span></td>
-            <td id="table1"><span id="demo31"></span></td>
-        </tr>
-        <tr>
-            <td id="table1"><span id="demo4"></span></td>
-            <td id="table1"><span id="demo40"></span></td>
-            <td id="table1"><span id="demo41"></span></td>
-        </table>
-<span id="demo5" style="font-weight:bold;"></span>
     <br><br>
-    <span id="demo122"></span>
-    <table border="1px solid black">
+    <table class="hide" id="anjon-table">
         <tr>
-            <td id="table1"><span id="demo7"></span></td>
-            <td id="table1"><span id="demo71"></span></td>
-            <td id="table1"><span id="demo72"></span></td>
+            <span class="hide" id="demo212"></span>
         </tr>
         <tr>
-            <td id="table1"><span id="demo8"></span></td>
-            <td id="table1"><span id="demo81"></span></td>
-            <td id="table1"><span id="demo82"></span></td>
+            <td><span id="demo2"></span></td>
+            <td><span id="demo20"></span></td>
+            <td><span id="demo21"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="demo9"></span></td>
-            <td id="table1"><span id="demo91"></span></td>
-            <td id="table1"><span id="demo92"></span></td>
+            <td><span id="demo3"></span></td>
+            <td><span id="demo30"></span></td>
+            <td><span id="demo31"></span></td>
         </tr>
         <tr>
-            <td id="table1"><span id="demo11"></span></td>
-            <td id="table1"><span id="demo111"></span></td>
-            <td id="table1"><span id="demo112"></span></td>
+            <td><span id="demo4"></span></td>
+            <td><span id="demo40"></span></td>
+            <td><span id="demo41"></span></td>
+        </tr>
+    </table>
+            <span class="hide" id="demo5" style="font-weight:bold;"></span>
+    <br><br>
+    <table class="hide" id="aceofbase-table">
+        <tr>
+            <span class="hide" id="demo122"></span>
         </tr>
         <tr>
-            <th id="table1"><span id="demo12"></span></th>
-            <th id="table1"><span id="demo121"></span></th>
+            <td><span id="demo7"></span></td>
+            <td><span id="demo71"></span></td>
+            <td><span id="demo72"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo8"></span></td>
+            <td><span id="demo81"></span></td>
+            <td><span id="demo82"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo9"></span></td>
+            <td><span id="demo91"></span></td>
+            <td><span id="demo92"></span></td>
+        </tr>
+        <tr>
+            <td><span id="demo11"></span></td>
+            <td><span id="demo111"></span></td>
+            <td><span id="demo112"></span></td>
+        </tr>
+        <tr>
+            <th><span id="demo12"></span></th>
+            <th><span id="demo121"></span></th>
         </tr>
     </table>
 </article>
@@ -221,11 +270,55 @@ footer {
     <br><span> Källor: Swesems PM "Blodgastolkning". https://slf.se/swesem/app/uploads/2019/03/blodgastolkning-190211.pdf </span><br><span> "Ace of Base" https://akuten.li/ace-of-base-blodgastolkning/</span>
 </footer>
     <script>
+        function hideKompTable() {
+            var tableelement = document.getElementById("komp-table")
+            var rubrikelement = document.getElementById("komp0")
+            let hco3value = document.getElementById("HCO3").value;
+            let pCO2value = document.getElementById("pCO2").value;
+            if (!pCO2value || !hco3value) {
+                return
+            }
+            // tableelement.classList.toggle("hide")
+            // tableelement.classList.add("hide")
+            tableelement.classList.remove("hide")
+            rubrikelement.classList.remove("hide")
+        }
+        function hideAnjonTable() {
+            var tableElement = document.getElementById("anjon-table");
+            var rubrikElement = document.getElementById("demo212");
+            var tolkElement = document.getElementById("demo5");
+            let hco3value = document.getElementById("HCO3").value;
+            let navalue = document.getElementById("Na").value;
+            let clvalue = document.getElementById("Cl").value;
+            if (!navalue || !hco3value || !clvalue) {
+                return
+            }
+            tableElement.classList.remove("hide");
+            rubrikElement.classList.remove("hide");
+            tolkElement.classList.remove("hide");
+        }
+        function hideAceofbaseTable() {
+            var tableElement = document.getElementById("aceofbase-table");
+            var rubrikElement = document.getElementById("demo122");
+            let navalue = document.getElementById("Na").value;
+            let hco3value = document.getElementById("HCO3").value;
+            let kvalue = document.getElementById("Ka").value;
+            let laktatvalue = document.getElementById("Laktat").value;
+            let clvalue = document.getElementById("Cl").value;
+            if (!navalue || !hco3value || !kvalue || !laktatvalue || !clvalue) {
+                return
+            }
+            tableElement.classList.remove("hide");
+            rubrikElement.classList.remove("hide");
+        }
         function syrabas() {
             let pHvalue = document.getElementById("pH").value;
             let pCO2value = document.getElementById("pCO2").value;
             let BEvalue = document.getElementById("BE").value;
             let hco3value = document.getElementById("HCO3").value;
+            if (!pHvalue || !pCO2value || !BEvalue) {
+                return
+            }
             document.getElementById("demo01").innerHTML = "Förenklad analys enligt Base Excess-metoden:";
             if (pHvalue < 7.38 && pCO2value <= 6 && pCO2value >= 4.6 && BEvalue >= -3 && BEvalue <= 3) {
                 document.getElementById("demo").innerHTML = "Acidemi, sannolikt metabol acidos men ej visualiserad med BE. Bedöm ace of base och anjongap.";
@@ -239,7 +332,7 @@ footer {
                 document.getElementById("demo").innerHTML = "Metabol acidos. Respiratorisk kompensation.";
             } else if (pHvalue < 7.38 && pCO2value < 4.6 && BEvalue > 3) {
                 document.getElementById("demo").innerHTML = "Acidemi. Oklart fall. Bedöm anjongap, SID, SIG etc.";
-            } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue > -3) {
+            } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue >= -3 && BEvalue <= 3) {
                 document.getElementById("demo").innerHTML = "Respiratorisk acidos";
             } else if (pHvalue < 7.38 && pCO2value > 6 && BEvalue < -3) {
                 document.getElementById("demo").innerHTML = "Metabol och respiratorisk acidos";
@@ -257,7 +350,7 @@ footer {
                 document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Metabol acidos och respiratorisk alkalos. Antingen parallella rubbningar eller fullt kompenserad rubbning.";
             } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value < 4.6 && BEvalue > 3) {
                 document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
-            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue > -3) {
+            } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue >= -3 && BEvalue <= 3) {
                 document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
             } else if (pHvalue >= 7.38 && pHvalue <= 7.42 && pCO2value > 6 && BEvalue < -3) {
                 document.getElementById("demo").innerHTML = "Ingen acidemi/alkalemi. Möjligt med flera processer som tar ut varandra.";
@@ -275,7 +368,7 @@ footer {
                 document.getElementById("demo").innerHTML = "Respiratorisk alkalos med metabol kompensation.";
             } else if (pHvalue > 7.42 && pCO2value < 4.6 && BEvalue > 3) {
                 document.getElementById("demo").innerHTML = "Metabol och respiratorisk alkalos.";
-            } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue > -3) {
+            } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue >= -3 && BEvalue <= 3) {
                 document.getElementById("demo").innerHTML = "Alkalemi. Oklart fall. Bedöm Ace of Base och anjongap.";
             } else if (pHvalue > 7.42 && pCO2value > 6 && BEvalue < -3) {
                 document.getElementById("demo").innerHTML = "Alkalemi. Oklart fall. Bedöm Ace of Base och anjongap.";

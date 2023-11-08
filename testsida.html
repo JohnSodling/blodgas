@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>testsida</title>
+</head>
+<body>
+    <button type="button" onclick="generateTable()">knapp</button>
+    <div id="testtabell">
+    </div>
+<script>
+    function generateTable() {
+        const tableelement = document.createElement("table");
+        const trelement = document.createElement("tr");
+        const td1element = document.createElement("td");
+        const td2element = document.createElement("td");
+        const td3element = document.createElement("td");
+        td1element.innerText = "lite text 1";
+        td2element.innerText = "lite text 2";
+        td3element.innerText = "lite text 3";
+        trelement.appendChild(td1element)
+        trelement.appendChild(td2element)
+        trelement.appendChild(td3element)
+        tableelement.appendChild(trelement)
+        var maketable = document.getElementById("testtabell")
+        maketable.appendChild(tableelement)
+    }
+</script>
+</body>
+</html>
