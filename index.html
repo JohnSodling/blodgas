@@ -147,6 +147,15 @@ footer {
     padding: 5px;
     border-collapse: collapse;
 }
+#norm-anjon-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#norm-anjon-table table, #norm-anjon-table th, #norm-anjon-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
 </style>
 </head>
 <body>
@@ -306,8 +315,8 @@ footer {
     </table>
 </article>
 <aside>
-    <button type="button" onclick="highAnjonMnemo()">Metabol Acidos med normalt anjongap</button><br>
-    <table class="hide" id="high-anjon-table">
+    <button type="button" onclick="normAnjonMnemo()">Metabol Acidos med normalt anjongap</button><br>
+    <table class="hide" id="norm-anjon-table">
         <th colspan="2">Metabol acidos med normalt anjongap (hyperkloremisk met acidos)</th>
         <tr>
             <td>U</td>
@@ -859,6 +868,10 @@ footer {
         }
         function highAnjonMnemo() {
             var tableelement = document.getElementById("high-anjon-table")
+            tableelement.classList.toggle("hide")
+        }
+        function normAnjonMnemo() {
+            var tableelement = document.getElementById("norm-anjon-table")
             tableelement.classList.toggle("hide")
         }
     </script>
