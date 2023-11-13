@@ -20,9 +20,9 @@ header {
   display: flex;
 }
 nav {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   background: #ccc;
   padding: 20px;
 }
@@ -31,16 +31,16 @@ nav ul {
   padding: 0;
 }
 article {
-  -webkit-flex: 7;
-  -ms-flex: 7;
-  flex: 7;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
   background-color: #f1f1f1;
   padding: 10px;
 }
 aside {
-  -webkit-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
   background-color: #ccc;
   padding: 10px;
 }
@@ -102,6 +102,51 @@ footer {
     padding: 5px;
     border-collapse: collapse;
 }
+#resp-acid-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#resp-acid-table table, #resp-acid-table th, #resp-acid-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#resp-alk-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#resp-alk-table table, #resp-alk-table th, #resp-alk-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#met-alk-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#met-alk-table table, #met-alk-table th, #met-alk-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#lakt-acid-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#lakt-acid-table table, #lakt-acid-table th, #lakt-acid-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
+#high-anjon-table {
+    border: 1px solid black;
+    width: 100%;
+}
+#high-anjon-table table, #high-anjon-table th, #high-anjon-table td {
+    border: 1px solid #000000;
+    padding: 5px;
+    border-collapse: collapse;
+}
 </style>
 </head>
 <body>
@@ -133,7 +178,7 @@ footer {
         </tr>
         <tr>
             <th>BE</th>
-            <th><input id="BE"></th>
+            <th><input id="BE" type="number"></th>
             <td>-3 - 3 mmol/L</td>
         </tr>
         <tr>
@@ -261,9 +306,225 @@ footer {
     </table>
 </article>
 <aside>
-    <p>testar lite</p>
-    <button type="button" onclick="respacidmnemo()">resp</button><br>
-    <p id="mnemo1"></p>
+    <button type="button" onclick="highAnjonMnemo()">Metabol Acidos med normalt anjongap</button><br>
+    <table class="hide" id="high-anjon-table">
+        <th colspan="2">Metabol acidos med normalt anjongap (hyperkloremisk met acidos)</th>
+        <tr>
+            <td>U</td>
+            <td>• Ureterostomy</td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>• Small bowel fistula</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>• Extra Cloride</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>• Diarrea</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>• Carbonic anhydrase inhibitor</td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td>• Renal tubular acidosis, kidney failure</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>• Adrenal insufficiency</td>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>• Pancreatic fistula</td>
+        </tr>
+    </table><br>
+    <button type="button" onclick="highAnjonMnemo()">Metabol Acidos med förhöjt anjongap</button><br>
+    <table class="hide" id="high-anjon-table">
+        <th colspan="2">Metabol acidos med förhöjt anjongap</th>
+        <tr>
+            <td>M</td>
+            <td>• Metanol<br>
+                • Metformin
+                </td>
+        </tr>
+        <tr>
+            <td>U</td>
+            <td>• Uremi
+            </td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>• Diabetes ketoacidos
+            </td>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>• Pyroglutamat (5-oxoprolin)<br>
+                • Propylenglykol
+                </td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>• Isoniazid<br>
+                • Järn
+                </td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>• L-laktat<br>
+                • D-laktat</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>• Etylenglykol<br>
+                • Etanolketoacidos
+                </td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>• Salicylsyra<br>
+                • Lösningsmedel (solvents; exempelvis toluen)<br>
+                • Svält ketoacidos</td>
+        </tr>
+    </table><br>
+    <button type="button" onclick="laktAcidMnemo()">Laktacidos</button><br>
+    <table class="hide" id="lakt-acid-table">
+        <th colspan="2">Orsaker till laktacidos</th>
+        <tr>
+            <td>Anaerob metabolism</td>
+            <td>• Nedsatt O2 tillförsel:<br>
+                - Systemiskt problem: hypotoni/chock, svår hypoxi mm<br>
+                - Lokalt problem, t ex emboliutlöst tarmischemi<br>
+                • Ökad efterfrågan, t ex krampanfall, svårt astmaanfall
+                </td>
+        </tr>
+        <tr>
+            <td>Nedsatt laktatclearance</td>
+            <td>• Leversvikt<br>
+                • Alkoholmissbruk</td>
+        </tr>
+        <tr>
+            <td>D-laktat</td>
+            <td>Patienter med short bowel syndrome eller genomgången
+                tunntarmsoperation har ökad risk för överväxt av bakterier som producerar
+                D-laktat vilket inte bryts ned i levern. D-laktat kan mätas i urin eller
+                plasma, normalvärde < 3,0 mmol/l.</td>
+        </tr>
+        <tr>
+            <td>Intoxikation
+            </td>
+            <td>• Cyanidförgiftning<br>
+                • CO-förgiftning<br>
+                • Metanol<br>
+                • Metformin<br>
+                • Isoniazid<br>
+                • Järn<br>
+                • Etylenglykol<br>
+                • Salicylat</td>
+        </tr>
+    </table><br>
+    <button type="button" onclick="metAlkMnemo()">Metabol Alkalos</button><br>
+    <table class="hide" id="met-alk-table">
+        <th colspan="2">Metabol Alkalos</th>
+        <tr>
+            <td>Intag</td>
+            <td>Iatrogent tillförd HCO3</td>
+        </tr>
+        <tr>
+            <td>Shift</td>
+            <td>Hypokalemi</td>
+        </tr>
+        <tr>
+            <td>Koncentrationsalkalos</td>
+            <td>Intorkningsorsakad stegring i HCO3 koncentration</td>
+        </tr>
+        <tr>
+            <td>Ökad H+ förlust</td>
+            <td>1-Kräkning<br>
+                2-Loop-diuretika<br>
+                3-Primär hyperaldosteronism
+                </td>
+        </tr>
+    </table><br>
+    <button type="button" onclick="respacidmnemo()">Respiratorisk Acidos</button><br>
+    <table class="hide" id="resp-acid-table">
+        <th colspan="2">Respiratorisk acidos</th>
+        <tr>
+            <td>Lungsjukdom</td>
+            <td>1-KOL<br>
+                2-Aspirationspneumoni<br>
+                3-Svårt lungödem<br>
+                4-Luftvägsobstruktion<br>
+                5-Pneumothorax, pleuravätska</td>
+        </tr>
+        <tr>
+            <td>Hjärna</td>
+            <td>1-Droger: opioider, alkohol, sedativa<br>
+                2-Infektioner: encefalit, transvers myelit<br>
+                3-Strukturellt problem: stroke, trauma, tumör</td>
+        </tr>
+        <tr>
+            <td>Nerver och NMJ</td>
+            <td>1-Skada på n frenikus<br>
+                2-Guillain Barré<br>
+                3-NMJ: botulism, myasthenia gravis mm</td>
+        </tr>
+        <tr>
+            <td>Muskuloskeletal</td>
+            <td>Myopatier<br>
+                Kyfoskolios, Bechterew</td>
+        </tr>
+    </table><br>
+    <button type="button" onclick="respAlkMnemo()">Respiratorisk Alkalos</button>
+    <table class="hide" id="resp-alk-table">
+        <th colspan="2">Respiratorisk Alkalos</th>
+        <tr>
+            <th>Hypoxiutlöst</th>
+        </tr>
+        <tr>
+            <td>Lung-/hjärtpatologi</td>
+            <td>1-Hjärtsvikt<br>
+                2-Pneumoni<br>
+                3-Lungemboli<br>
+                4-Interstitiell lungsjukdom
+            </td>
+        </tr>
+        <tr>
+            <td>Anemi</td>
+        </tr>
+        <td>Hög altitud</td>
+        <tr>
+            <th>Icke-hypoxiutlöst</th>
+        </tr>
+        <tr>
+            <td>Läkemedel</td>
+            <td>1-ASA<br>
+                2-Methylxanthine: theophyllamin, koffein<br>
+                3-Nikotin</td>
+        </tr>
+        <tr>
+            <td>Ångest</td>
+        </tr>
+        <tr>
+            <td>Leverencephalopati</td>
+        </tr>
+        <tr>
+            <td>Strukturella orsaker</td>
+            <td>Hjärnstamspatologi</td>
+        </tr>
+        <tr>
+            <td>Sepsis</td>
+            <td>Särskilt gramnegativ sepsis</td>
+        </tr>
+        <tr>
+            <td>Graviditet</td>
+            <td>Sekundärt till högt progesteron</td>
+        </tr>
+    </table>
 </aside>
 </section>
 <footer>
@@ -275,9 +536,9 @@ footer {
             var rubrikelement = document.getElementById("komp0")
             let hco3value = document.getElementById("HCO3").value;
             let pCO2value = document.getElementById("pCO2").value;
-            if (!pCO2value || !hco3value) {
-                return
-            }
+          //  if (!pCO2value || !hco3value) {
+            //    return
+           // }
             // tableelement.classList.toggle("hide")
             // tableelement.classList.add("hide")
             tableelement.classList.remove("hide")
@@ -290,9 +551,9 @@ footer {
             let hco3value = document.getElementById("HCO3").value;
             let navalue = document.getElementById("Na").value;
             let clvalue = document.getElementById("Cl").value;
-            if (!navalue || !hco3value || !clvalue) {
-                return
-            }
+        //    if (!navalue || !hco3value || !clvalue) {
+         //       return
+          //  }
             tableElement.classList.remove("hide");
             rubrikElement.classList.remove("hide");
             tolkElement.classList.remove("hide");
@@ -305,9 +566,9 @@ footer {
             let kvalue = document.getElementById("Ka").value;
             let laktatvalue = document.getElementById("Laktat").value;
             let clvalue = document.getElementById("Cl").value;
-            if (!navalue || !hco3value || !kvalue || !laktatvalue || !clvalue) {
-                return
-            }
+           // if (!navalue || !hco3value || !kvalue || !laktatvalue || !clvalue) {
+             //   return
+            //}
             tableElement.classList.remove("hide");
             rubrikElement.classList.remove("hide");
         }
@@ -394,12 +655,15 @@ footer {
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
             let clvalue = document.getElementById("Cl").value;
-            let anjongapresult = (navalue*10 - hco3value*10 - clvalue*10) / 10
+            let anjongapresult = +navalue - hco3value - clvalue
             console.log(anjongapresult)
             document.getElementById("demo2").innerHTML = "Anjongap: ";
-            document.getElementById("demo20").innerHTML = anjongapresult;
             document.getElementById("demo21").innerHTML = "[Na] – ([Cl] + [HCO3])";
-            document.getElementById("demo212").innerHTML = "Beräkning av klassiskt anjongap för att underlätta diagnostik vid metabola rubbningar";
+            document.getElementById("demo212").innerHTML = "Beräkning av klassiskt anjongap för diagnostik vid metabola rubbningar";
+            if (!navalue || !hco3value || !clvalue) {
+                return
+            }
+            document.getElementById("demo20").innerHTML = anjongapresult.toFixed(1);
         }
         function deltaanjongap() {
             let navalue = document.getElementById("Na").value;
@@ -407,19 +671,25 @@ footer {
             let clvalue = document.getElementById("Cl").value;
             let deltaanjongapresult = (navalue*10 - hco3value*10 - clvalue*10 - 12*10) / 10
             console.log(deltaanjongapresult)
-            document.getElementById("demo3").innerHTML = "Delta anjongap: ";
-            document.getElementById("demo30").innerHTML = deltaanjongapresult;
+            document.getElementById("demo3").innerHTML = "∆Anjongap: ";
             document.getElementById("demo31").innerHTML = "Anjongap - 12";
+            if (!navalue || !hco3value || !clvalue) {
+                return
+            }
+            document.getElementById("demo30").innerHTML = deltaanjongapresult.toFixed(1);
         }
         function deltaanjongapHCO3() {
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
             let clvalue = document.getElementById("Cl").value;
-            let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
+            let deltaanjongapHCO3result = +navalue - clvalue - 12
             console.log(deltaanjongapHCO3result)
-            document.getElementById("demo4").innerHTML = "Delta anjongap + HCO3: ";
-            document.getElementById("demo40").innerHTML = deltaanjongapHCO3result;
-            document.getElementById("demo41").innerHTML = "Delta anjongap + HCO3";
+            document.getElementById("demo4").innerHTML = "∆Anjongap + HCO3: ";
+            document.getElementById("demo41").innerHTML = "∆Anjongap + [HCO3]";
+            if (!navalue || !hco3value || !clvalue) {
+                return
+            }
+            document.getElementById("demo40").innerHTML = deltaanjongapHCO3result.toFixed(1);
         }
         function deltaanjongapHCO3tolk() {
             let navalue = document.getElementById("Na").value;
@@ -429,7 +699,7 @@ footer {
             if (deltaanjongapHCO3result <= 27 && deltaanjongapHCO3result >= 21) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar inte för ytterligare metabol rubbning";
             } else if (deltaanjongapHCO3result < 21) {
-                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig hyperkloremisk metabol acidos";
+                document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig metabol acidos med normalt anjongap";
             } else if (deltaanjongapHCO3result > 27) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar för samtidig samtidig metabol alkalos ";
             } else {
@@ -440,35 +710,44 @@ footer {
             let navalue = document.getElementById("Na").value;
             let kvalue = document.getElementById("Ka").value;
             let clvalue = document.getElementById("Cl").value;
-            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
+            let SIDresult = +navalue - clvalue + +kvalue
             console.log(SIDresult)
-            document.getElementById("demo6").innerHTML = "SID: " + SIDresult;
+            document.getElementById("demo6").innerHTML = "SID: " + SIDresult.toFixed(1);
         }
         function deltaSID() {
             let navalue = document.getElementById("Na").value;
             let kvalue = document.getElementById("Ka").value;
             let clvalue = document.getElementById("Cl").value;
-            let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
+            let deltaSIDresult = (+navalue + +kvalue - clvalue - 42)
             console.log(deltaSIDresult)
-            document.getElementById("demo7").innerHTML = "Delta-SID ";
-            document.getElementById("demo71").innerHTML = deltaSIDresult + " mEq";
+            document.getElementById("demo7").innerHTML = "∆SID (Strong Ion Difference)";
             document.getElementById("demo72").innerHTML = "([Na]+[K]-[Cl]) - 42:";
+            if (!navalue || !kvalue || !clvalue) {
+                return
+            }
+            document.getElementById("demo71").innerHTML = deltaSIDresult.toFixed(1) + " mEq";
         }
         function deltaLaktat() {
             let laktatvalue = document.getElementById("Laktat").value;
-            let deltaLaktatresult = (1*10 - laktatvalue*10) / 10
+            let deltaLaktatresult = +1 - laktatvalue
             console.log(deltaLaktatresult)
-            document.getElementById("demo8").innerHTML = "Delta laktat ";
-            document.getElementById("demo81").innerHTML = deltaLaktatresult + " mEq";
+            document.getElementById("demo8").innerHTML = "∆Laktat ";
             document.getElementById("demo82").innerHTML = "1 - [Lac]";
+            if (!laktatvalue) {
+                return
+            }
+            document.getElementById("demo81").innerHTML = deltaLaktatresult.toFixed(1) + " mEq";
         }
         function deltaAlbumin() {
             let albuminvalue = document.getElementById("Albumin").value;
-            let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
+            let deltaAlbuminresult = +10 - (albuminvalue * 0.25)
             console.log(deltaAlbuminresult)
-            document.getElementById("demo9").innerHTML = "Delta Albumin ";
-            document.getElementById("demo91").innerHTML = " " + deltaAlbuminresult + " mEq ";
+            document.getElementById("demo9").innerHTML = "∆Albumin ";
             document.getElementById("demo92").innerHTML = " (10 - ([Albumin] x 0,25): ";
+            if (!albuminvalue) {
+                return
+            }
+            document.getElementById("demo91").innerHTML = " " + deltaAlbuminresult.toFixed(1) + " mEq ";
         }
         function SIG() {
             let navalue = document.getElementById("Na").value;
@@ -477,10 +756,10 @@ footer {
             let hco3value = document.getElementById("HCO3").value;
             let albuminvalue = document.getElementById("Albumin").value;
             let laktatvalue = document.getElementById("Laktat").value;
-            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
-            let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
+            let SIDresult = +navalue - clvalue + +kvalue
+            let SIGresult = SIDresult - hco3value - (albuminvalue * 0.25) -laktatvalue
             console.log(SIGresult)
-            document.getElementById("demo10").innerHTML = "SIG: " + SIGresult;
+            document.getElementById("demo10").innerHTML = "SIG: " + SIGresult.toFixed(1);
         }
         function deltaSIG() {
             let navalue = document.getElementById("Na").value;
@@ -493,9 +772,12 @@ footer {
             let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
             let deltaSIGresult = (7*10 - SIGresult*10) / 10
             console.log(deltaSIGresult)
-            document.getElementById("demo11").innerHTML = "Delta SIG: ";
-            document.getElementById("demo111").innerHTML = " " + deltaSIGresult + " mEq ";
+            document.getElementById("demo11").innerHTML = "∆SIG (Strong Ion Gap) ";
             document.getElementById("demo112").innerHTML = "7 - SIG; SIG = SID – ([HCO3] + ([Alb] x 0.25) + [Lac])";
+            if (!albuminvalue || !navalue || !hco3value || !kvalue || !laktatvalue || !clvalue) {
+                return
+            }
+            document.getElementById("demo111").innerHTML = " " + deltaSIGresult + " mEq ";
         }
         function aceofbase() {
             let navalue = document.getElementById("Na").value;
@@ -505,17 +787,20 @@ footer {
             let albuminvalue = document.getElementById("Albumin").value;
             let laktatvalue = document.getElementById("Laktat").value;
             let BEvalue = document.getElementById("BE").value;
-            let SIDresult = (+navalue*10 - clvalue*10 + +kvalue*10) / 10
-            let deltaSIDresult = (+navalue*10 + +kvalue*10 - clvalue*10 - 42*10) / 10
-            let deltaLaktatresult = (1*10 - laktatvalue*10) / 10
-            let deltaAlbuminresult = +10*10/10 - ((albuminvalue*10/10) / (4*10/10))
-            let SIGresult = (SIDresult*10 - hco3value*10 - ((albuminvalue/4)*10) -laktatvalue*10) / 10
-            let deltaSIGresult = (7*10 - SIGresult*10) / 10
-            let aceofbaseresult = (+deltaSIDresult*10 + +deltaLaktatresult*10 + +deltaAlbuminresult*10 + +deltaSIGresult*10) / 10
+            let SIDresult = +navalue - clvalue + +kvalue
+            let deltaSIDresult = +navalue + +kvalue - clvalue - 42
+            let deltaLaktatresult = +1 - laktatvalue
+            let deltaAlbuminresult = +10 - (albuminvalue * 0.25)
+            let SIGresult = SIDresult - hco3value - (albuminvalue * 0.25) - laktatvalue
+            let deltaSIGresult = +7 - SIGresult
+            let aceofbaseresult = +deltaSIDresult + +deltaLaktatresult + +deltaAlbuminresult + +deltaSIGresult
             console.log(aceofbaseresult)
             document.getElementById("demo122").innerHTML = "Ace of Base, en tolkningsmetod av metabola rubbningar som baseras på Stewarts modell"
-            document.getElementById("demo12").innerHTML = "Summa: (Kan korreleras mot BE)";
-            document.getElementById("demo121").innerHTML = " " + aceofbaseresult + " mEq ";
+            document.getElementById("demo12").innerHTML = "Summa: (Kan korreleras mot BE = " + BEvalue + " )";
+            if (!albuminvalue || !navalue || !hco3value || !kvalue || !laktatvalue || !clvalue) {
+                return
+            }
+            document.getElementById("demo121").innerHTML = " " + aceofbaseresult.toFixed(1) + " mEq ";
            //document.getElementById("demo122").innerHTML = " Summan" + aceofbaseresult + " mEq kan korreleras mot BE" + BEvalue;
         }
         function kompensation() {
@@ -525,36 +810,56 @@ footer {
             console.log(Arespacidkompresult)
             document.getElementById("komp0").innerHTML = "Tabell över förväntad kompensation vid olika primära syra-basrubbningar. Ett värde långt ifrån förväntat kan tala för flera parallella rubbningar. Beräknas mot normalvärde på på pCO2 5,3 kPa och HCO3 24 mmol/L."
             document.getElementById("komp1").innerHTML = "Akut Respiratorisk Acidos";
-            document.getElementById("komp2").innerHTML = "Förväntat HCO3: " + Arespacidkompresult.toFixed(1) + " mmol/L";
             document.getElementById("komp21").innerHTML = "∆HCO3 = 0,75 x ∆pCO2";
             let Arespalkkompresult = 1.5 * (pCO2value - 5.3) + +24
             console.log(Arespalkkompresult)
             document.getElementById("komp3").innerHTML = "Akut Respiratorisk Alkalos";
-            document.getElementById("komp4").innerHTML = "Förväntat HCO3: " + Arespalkkompresult.toFixed(1) + " mmol/L";
             document.getElementById("komp41").innerHTML = "∆HCO3 = 1,50 x ∆pCO2";
             let Krespacidkompresult = (2.62 * (pCO2value - 5.3)) + +24
             console.log(Krespacidkompresult)
             document.getElementById("komp5").innerHTML = "Kronisk Respiratorisk Acidos";
-            document.getElementById("komp6").innerHTML = "Förväntat HCO3: " + Krespacidkompresult.toFixed(1) + " mmol/L";
             document.getElementById("komp61").innerHTML = "∆HCO3 = 2,62 x ∆pCO2 ";
-            let Krespalkkompresult = (3*10/10 * (pCO2value - 5.3)) + +24*10/10
+            let Krespalkkompresult = (3 * (pCO2value - 5.3)) + +24
             console.log(Krespalkkompresult)
             document.getElementById("komp7").innerHTML = "Kronisk Respiratorisk Alkalos";
-            document.getElementById("komp8").innerHTML = "Förväntat HCO3: " + Krespalkkompresult.toFixed(1) + " mmol/L";
             document.getElementById("komp81").innerHTML = "∆HCO3 = 3,0 x ∆pCO2";
             let metacidkompresult = 0.17 * (hco3value - 24) + +5.3
             console.log(metacidkompresult)
             document.getElementById("komp9").innerHTML = "Metabol acidos";
-            document.getElementById("komp10").innerHTML = "Förväntat pCO2: " + metacidkompresult.toFixed(1) + " kPa";
             document.getElementById("komp101").innerHTML = "∆pCO2 = 0,17 x ∆HCO3";
-            let metalkkompresult = 0.08*10/10 * (hco3value*10/10 - 24*10/10) + +5.3*10/10
+            let metalkkompresult = 0.08 * (hco3value - 24) + +5.3
             console.log(metalkkompresult)
             document.getElementById("komp11").innerHTML = "Metabol alkalos";
-            document.getElementById("komp12").innerHTML = "Förväntat pCO2: " + metalkkompresult.toFixed(1) + " kPa";
             document.getElementById("komp121").innerHTML = "∆pCO2 = 0,08 x ∆HCO3";
+            if (!hco3value || !pCO2value) {
+                return
+            }
+            document.getElementById("komp2").innerHTML = "Förväntat HCO3: " + Arespacidkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp4").innerHTML = "Förväntat HCO3: " + Arespalkkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp6").innerHTML = "Förväntat HCO3: " + Krespacidkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp8").innerHTML = "Förväntat HCO3: " + Krespalkkompresult.toFixed(1) + " mmol/L";
+            document.getElementById("komp10").innerHTML = "Förväntat pCO2: " + metacidkompresult.toFixed(1) + " kPa";
+            document.getElementById("komp12").innerHTML = "Förväntat pCO2: " + metalkkompresult.toFixed(1) + " kPa";
         }
         function respacidmnemo() {
-            document.getElementById("mnemo1").innerHTML = "KOL";
+            var tableelement = document.getElementById("resp-acid-table")
+            tableelement.classList.toggle("hide")
+        }
+        function respAlkMnemo() {
+            var tableelement = document.getElementById("resp-alk-table")
+            tableelement.classList.toggle("hide")
+        }
+        function metAlkMnemo() {
+            var tableelement = document.getElementById("met-alk-table")
+            tableelement.classList.toggle("hide")
+        }
+        function laktAcidMnemo() {
+            var tableelement = document.getElementById("lakt-acid-table")
+            tableelement.classList.toggle("hide")
+        }
+        function highAnjonMnemo() {
+            var tableelement = document.getElementById("high-anjon-table")
+            tableelement.classList.toggle("hide")
         }
     </script>
 
