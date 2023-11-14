@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-    {
+* {
   box-sizing: border-box;
 }
 header {
@@ -704,7 +704,10 @@ footer {
             let navalue = document.getElementById("Na").value;
             let hco3value = document.getElementById("HCO3").value;
             let clvalue = document.getElementById("Cl").value;
-            let deltaanjongapHCO3result = (navalue*10 - clvalue*10 - 12*10) / 10
+            let deltaanjongapHCO3result = navalue - clvalue - 12
+            if (!navalue || !hco3value || !clvalue) {
+                return
+            }
             if (deltaanjongapHCO3result <= 27 && deltaanjongapHCO3result >= 21) {
                 document.getElementById("demo5").innerHTML = "Delta AG + HCO3 talar inte för ytterligare metabol rubbning";
             } else if (deltaanjongapHCO3result < 21) {
